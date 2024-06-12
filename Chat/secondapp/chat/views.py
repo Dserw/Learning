@@ -1,11 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import DetailView, ListView, UpdateView
-
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, ListView, UpdateView, CreateView
 from .models import *
 from .serializer import *
 from rest_framework import generics
-from .forms import UserEditForm
+from .forms import UserEditForm, RoomCreatedForm
 
 # Create your views here.
 
@@ -54,3 +54,9 @@ class UserListView(ListView):
     template_name = 'users.html'
     queryset = User.objects.all()
 
+
+class RoomCreatedView(CreateView):
+    model = Room
+    template_name = 'room_create.html'
+    form_class = RoomCreatedForm
+    success_url = reverse_lazy('rooms')

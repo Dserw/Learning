@@ -6,7 +6,7 @@ class RoomCreatedForm(ModelForm):
 
     class Meta:
         model = Room
-        fields = ['name', 'UserRoom']
+        fields = ['name', 'slug', 'UserRoom']
 
 
 class UserEditForm(ModelForm):

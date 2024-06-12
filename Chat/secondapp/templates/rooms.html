@@ -15,12 +15,30 @@
                     <h3><a href="/chat/users/">All USERS</a></h3>
                 </div>
 
+                <div class="room-card">
+                    <h4><a href="chat/created/">CreatE RooM</a></h4>
+                </div>
+
         </div>
 
         <div class="sign">
             <h3>Available rooms</h3>
         </div>
 
+    <style>
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px; /* Расстояние между карточками */
+        }
+
+        .room-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
 
     {% if rooms %}
         <div class="cards">
