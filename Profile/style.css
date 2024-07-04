@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.profile img {
+    width: 150px; /* или любое другое значение, которое вам подходит */
+    height: auto; /* Сохраняет пропорции изображения */
+    border-radius: 50%; /* Для круглой формы изображения */
+    margin-right: 20px; /* Отступ справа */
+}
+
+.profile .container {
+    display: flex;
+    align-items: center;
+}
+
+.experience, .skills, .contact {
+    padding: 20px 0;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+    margin-left: 20px;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #ccc;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 4px solid #333;
+    border-radius: 50%;
+    top: 10px;
+}
+
+.timeline-date {
+    flex: 0 0 80px;
+    padding-top: 10px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.timeline-content {
+    flex: 1;
+    padding-left: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.collapsible-content {
+    display: none;
+    padding-left: 20px; /* Для отступа текста внутри раскрывающегося блока */
+}
+
+.timeline h3 {
+    cursor: pointer;
+}
+
+.timeline h3:hover {
+    color: #007BFF; /* Изменение цвета при наведении для интерактивности */
+}
+
+.skillbar {
+    margin-bottom: 10px;
+}
+
+.skillbar-title {
+    font-weight: bold;
+}
+
+.skillbar-bar {
+    background: #333;
+    color: #fff;
+    text-align: right;
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile img {
+        margin-bottom: 10px;
+    }
+}
