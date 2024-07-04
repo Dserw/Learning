@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen and Location Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .info {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #315efb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #294bbf;
+        }
+    </style>
+</head>
+<body>
+    <h1>Получение информации о пользователе</h1>
+    <button class="btn" onclick="displayInfo()">Показать информацию</button>
+    <div class="info" id="info"></div>
+
+    <script>
+        function displayInfo() {
+            const infoDiv = document.getElementById('info');
+            
+            // Получение размеров экрана
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            
+            let infoText = `Размеры экрана: ${screenWidth} x ${screenHeight}px<br>`;
+
+            // Получение координат местонахождения
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        infoText += `Координаты местонахождения: Широта ${latitude}, Долгота ${longitude}`;
+                        infoDiv.innerHTML = infoText;
+                    },
+                    () => {
+                        infoText += 'Информация о местоположении недоступна';
+                        infoDiv.innerHTML = infoText;
+                    }
+                );
+            } else {
+                infoText += 'Информация о местоположении недоступна';
+                infoDiv.innerHTML = infoText;
+            }
+        }
+    </script>
+</body>
+</html>

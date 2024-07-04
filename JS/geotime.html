@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timezone Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .info {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #315efb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #294bbf;
+        }
+    </style>
+</head>
+<body>
+    <h1>Получение информации о временной зоне</h1>
+    <button class="btn" onclick="fetchTimezoneInfo()">Показать информацию</button>
+    <div class="info" id="info"></div>
+
+    <script>
+        function fetchTimezoneInfo() {
+            const infoDiv = document.getElementById('info');
+            infoDiv.innerHTML = 'Загрузка информации...';
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        const apiKey = '32bcd4a6e4b548968e7afcdb682ac679';
+                        const url = `https://api.ipgeolocation.io/timezone?apiKey=${apiKey}&lat=${latitude}&long=${longitude}`;
+
+                        fetch(url)
+                            .then(response => response.json())
+                            .then(data => {
+                                const timezone = data.timezone;
+                                const dateTime = data.date_time_txt;
+                                infoDiv.innerHTML = `Временная зона: ${timezone}<br>Местные дата и время: ${dateTime}`;
+                            })
+                            .catch(error => {
+                                infoDiv.innerHTML = 'Ошибка при получении данных от API';
+                                console.error('Ошибка:', error);
+                            });
+                    },
+                    (error) => {
+                        infoDiv.innerHTML = 'Информация о местоположении недоступна';
+                        console.error('Ошибка получения местоположения:', error);
+                    }
+                );
+            } else {
+                infoDiv.innerHTML = 'Геолокация не поддерживается вашим браузером';
+            }
+        }
+    </script>
+</body>
+</html>

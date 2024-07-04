@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .chat-container {
+            border: 1px solid #c3c3c3;
+            padding: 10px;
+            width: 500px;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        .message {
+            margin: 5px;
+            padding: 8px;
+            border: 1px solid #c3c3c3;
+            border-radius: 5px;
+        }
+        .message.user {
+            text-align: right;
+            border-color: #007bff;
+        }
+        .message.server {
+            text-align: left;
+            border-color: #28a745;
+        }
+        .message.geo {
+            text-align: right;
+            border-color: #ffc107;
+        }
+        .controls {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .controls input {
+            flex: 1;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #c3c3c3;
+            border-radius: 5px;
+        }
+        .controls button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .send-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .geo-btn {
+            background-color: #ffc107;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>WebSocket Chat</h1>
+    <div class="controls">
+        <input type="text" id="messageInput" placeholder="Здесь вводится текст сообщения">
+        <button class="send-btn" onclick="sendMessage()">Отправить</button>
+        <button class="geo-btn" onclick="sendGeolocation()">Гео-локация</button>
+    </div>
+    <div class="chat-container" id="chatContainer"></div>
+
+    <script>
+        const ws = new WebSocket('wss://echo.websocket.org');
+
+        ws.onmessage = (event) => {
+            displayMessage(event.data, 'server');
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            if (message !== '') {
+                displayMessage(message, 'user');
+                ws.send(message);
+                input.value = '';
+            }
+        }
+
+        function sendGeolocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const geoUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}`;
+                    const geoMessage = `<a href="${geoUrl}" target="_blank">Гео-локация</a>`;
+                    displayMessage(geoMessage, 'geo');
+                    ws.send(`Гео-локация: ${geoUrl}`);
+                }, () => {
+                    displayMessage('Информация о местоположении недоступна', 'geo');
+                });
+            } else {
+                displayMessage('Геолокация не поддерживается вашим браузером', 'geo');
+            }
+        }
+
+        function displayMessage(message, type) {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', type);
+            messageElement.innerHTML = message;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>
