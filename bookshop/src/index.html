@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <title>BookShop</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Bookshop</div>
+        <nav>
+            <ul>
+                <li><a href="#">BOOKS</a></li>
+                <li><a href="#">AUDIOBOOKS</a></li>
+                <li><a href="#">Stationery & gifts</a></li>
+                <li><a href="#">BLOG</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <button id="search-button" disabled>Search</button>
+            <button id="cart-button" disabled>
+                Cart
+                <span id="cart-badge" class="badge"></span>
+            </button>
+            <button id="login-button" disabled>Login</button>
+        </div>
+    </header>
+    <main>
+        <!-- Добавляем слайдер -->
+        <div class="slider">
+            <div class="image"></div>
+            <div class="dots"></div>
+        </div>
+
+        <!-- Добавляем блоки -->
+        <div class="color-blocks">
+            <a href="#" class="color-block">
+                <img src="./image/block1.svg" alt="Block 1">
+            </a>
+            <a href="#" class="color-block">
+                <img src="./image/block2.svg" alt="Block 2" >
+            </a>
+        </div>
+        <!-- Добавляем категории -->
+        <div class="category-section">
+            <ul class="category-list" id="category-list">
+                <!-- Categories will be inserted here -->
+            </ul>
+        </div>
+        <!-- Добавляем книги -->
+        <div class="book-section">
+            <ul class="book-list" id="book-list">
+                <!-- Books will be inserted here -->
+            </ul>
+            <button class="load-more" id="load-more">Load more</button>
+        </div>
+
+    </main>
+    <script src="../dist/main.js"></script>
+</body>
+</html>

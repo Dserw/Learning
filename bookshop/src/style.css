@@ -1,0 +1,216 @@
+header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    position: fixed;
+    width: 1440px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    width: 128px;
+    height: 29px;
+    top: -1206px;
+    left: -554px;
+    font-family: Montserrat, serif;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: left;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #5C6A79;
+    width: 109px;
+    height: 12px;
+    top: -1197px;
+    left: 10px;
+    font-family: Montserrat, serif;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.actions button {
+    background: #444;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    cursor: not-allowed;
+}
+
+#cart-button {
+    position: relative;
+}
+
+#cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.slider {
+    position: relative;
+    width: 1120px;
+    height: 702px;
+    top: 116px;
+    left: 160px;
+    overflow: hidden;
+}
+
+.image {
+    width: 70%;
+    height: 70%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 5s ease-in-out;
+    margin: 0 200px;
+}
+
+
+.dots {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.dots span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dots .active {
+    background: #333;
+}
+
+.color-blocks {
+    position: absolute; /* Оставляем поверх слайдера */
+    top: 150px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+}
+
+.color-block img {
+    width: 149px;
+    height: 204px;
+    top: 195px;
+    left: 1217px;
+    margin-right: 220px;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    width: 416px;
+    height: 710px;
+    top: 952px;
+    background-color: #EFEEF6;
+    box-sizing: border-box;
+}
+
+.category-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.category-item.active {
+    background-color: #EEECEC;
+    font-weight: bold;
+}
+
+.book-list {
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    top: 740px;
+    left: 300px;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: calc(70% - 20px); /* Two columns with gap */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-cover {
+    width: 40%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.book-author {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.book-rating {
+    color: #ffaa00;
+    margin-bottom: 5px;
+}
+
+.book-description {
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.book-price {
+    font-weight: bold;
+}

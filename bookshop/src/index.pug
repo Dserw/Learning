@@ -1,0 +1,45 @@
+doctype html
+| PASTE YOUR HTML CODE HERE
+head
+    meta(charset='UTF-8')
+    link(rel='stylesheet' href='./style.css')
+    title BookShop
+header
+    .logo Bookshop
+    nav
+        ul
+            li
+                a(href='#') BOOKS
+            li
+                a(href='#') AUDIOBOOKS
+            li
+                a(href='#') Stationery &amp; gifts
+            li
+                a(href='#') BLOG
+    .actions
+        button#search-button(disabled='') Search
+        button#cart-button(disabled='')
+            | Cart
+            span#cart-badge.badge
+        button#login-button(disabled='') Login
+main
+    // Добавляем слайдер
+    .slider
+        .image
+        .dots
+    // Добавляем блоки
+    .color-blocks
+        a.color-block(href='#')
+            img(src='../src/image/block1.svg' alt='Block 1')
+        a.color-block(href='#')
+            img(src='../src/image/block2.svg' alt='Block 2')
+    // Добавляем категории
+    .category-section
+        ul#category-list.category-list
+            // Categories will be inserted here
+    // Добавляем книги
+    .book-section
+        ul#book-list.book-list
+            // Books will be inserted here
+        button#load-more.load-more Load more
+script(src='../dist/main.js')
